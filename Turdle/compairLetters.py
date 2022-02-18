@@ -14,7 +14,10 @@ def compairCharAndLocation(word, usrInput):
     #For console view
     locationBank = ["_","_","_","_","_"] #stores correct positioned letters
     charBank = ["_","_","_","_"]  #keeps similar letters that are out of order
+    incorrectBank = ["", "", "", "", "", "", "", ""] #Stores incorrect
+
     countCharBank = 0 #counter for charBank
+    incorrectCount = 0
 
     for i in range(size):
         if usrInput[i].lower() in rndWord.lower():
@@ -37,12 +40,22 @@ def compairCharAndLocation(word, usrInput):
                     countCharBank += 1
                     countChar += 1
 
+              #Stores incorrect words guessed
+        # else:
+        #     if usrInput[incorrectCount] not in incorrectBank:
+        #         incorrectBank[incorrectCount] = usrInput[i]
+        #         incorrectCount += 1
+
+
     #Information that will be printed every time
     print("\nLetters in the correct Location")
     print("['{}'{}'{}'{}'{}']".format(*locationBank))
 
     print("\nCorrect letters you have put in the wrong location")
     print("[{}{}{}{}]".format(*charBank))
+
+    # print("\nIncorrect Letters you have guessed")
+    # print("[]".format(*charBank))
 
     print("\n\nThere is/are", countLocation, "letter(s) in the correct spot\n"
     "and there is/are", countChar,"total similar letter(s)!")

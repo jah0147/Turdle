@@ -97,14 +97,14 @@ def main():
 
     # Set varaibles -
     # These variables are called here so that they are consistent throughout the program.
-    tries = 5
+
     randWord = pickRandomWord(filename)
 
     usrInput = input("Would you like to enable cheats?\n"
                      "y or n: ")
     if usrInput.lower() == "y":
         cheatcode = input("Please type in the cheat code: ")
-        if cheatcode == "seethru":
+        if cheatcode == "word":
             print("\nCHEATS ENABLED\n")
             print("The random word is: ", randWord, "\n")  # For testing, prints the randomly generated word
         elif cheatcode == "debug":
@@ -121,6 +121,8 @@ def main():
         else:
             print("\nThat code is invalid!\n"
                   "Please enjoy the game with cheats disabled!\n")
+    else:
+        tries = 6
 
     print("\nThe game has picked a random 5 letter word\n")
     guessCompair(filename, randWord, tries)
