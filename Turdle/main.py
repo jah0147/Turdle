@@ -9,15 +9,15 @@ Ver. 0.1
 """
 
 #Python classes
-import csv
+#import csv
 import time
 
-from numpy import loadtxt
+#from numpy import loadtxt
 
 #My Modules
 from wordArrays import createArray
 from randomWord import pickRandomWord
-import guessWord
+#import guessWord
 from guessWord import guessCompair
 
 
