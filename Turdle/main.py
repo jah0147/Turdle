@@ -71,13 +71,25 @@ def endGame(startTime):
 
 
 def main():
-
     # Text Files
     customWords = "customWords.txt"
     testFile = "testFile.txt"
     mainFile = "words.txt"
 
-    filename = testFile  # change the text file to change words
+    print("\nWELCOME TO TURDLE\n"
+          "The goal of the game is to guess the 5-letter word in 5 tries or less.\n"
+          "Good Luck!\n\n")
+
+    fileInput = input("What word-bank would you like to use:")
+    if fileInput.lower() == "custom":
+        filename = testFile
+    elif fileInput.lower() == "" or "main":
+        filename = mainFile
+    elif fileInput.lower() == "test":
+        filename = testFile
+
+
+    #filename = testFile  # change the text file to change words
     print("You are using the", "'", filename, "'", "word list!\n")
 
     # Set varaibles -
@@ -107,10 +119,7 @@ def main():
             print("\nThat code is invalid!\n"
                   "Please enjoy the game with cheats disabled!\n")
 
-    print("\nWELCOME TO TURDLE\n"
-          "The goal of the game is to guess the 5-letter word in 5 tries or less.\n"
-          "Good Luck!\n\n")
-
+    print("\nThe game has picked a random 5 letter word\n")
     guessCompair(filename, randWord, tries)
     return
 # Press the green button in the gutter to run the script.

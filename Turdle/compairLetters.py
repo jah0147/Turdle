@@ -39,7 +39,7 @@ def compairCharAndLocation(word, usrInput):
 
     #Information that will be printed every time
     print("\nLetters in the correct Location")
-    print("[ '{}'{}'{}'{}'{}']".format(*locationBank))
+    print("['{}'{}'{}'{}'{}']".format(*locationBank))
 
     print("\nCorrect letters you have put in the wrong location")
     print("[{}{}{}{}]".format(*charBank))
