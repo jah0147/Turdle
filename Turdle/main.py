@@ -80,6 +80,7 @@ def main():
           "The goal of the game is to guess the 5-letter word in 5 tries or less.\n"
           "Good Luck!\n\n")
 
+    #Choose a word-bank
     fileInput = input("What word-bank would you like to use:")
     if fileInput.lower() == "custom":
         filename = testFile
@@ -87,6 +88,8 @@ def main():
         filename = mainFile
     elif fileInput.lower() == "test":
         filename = testFile
+    else:
+        filename = mainFile
 
 
     #filename = testFile  # change the text file to change words
