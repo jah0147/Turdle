@@ -18,7 +18,7 @@ import time
 #My Modules
 from wordArrays import createArray
 from randomWord import pickRandomWord
-#import guessWord
+from continueGame import continueGame
 from guessWord import guessCompair
 
 tries = 0
@@ -84,20 +84,6 @@ def wordBank():
     print("You are using the", filename, "word list!\n")
     return filename
 
-def continueGame():
-    f = open("keepScore.txt", "r")
-    fileScore = int(f.read())
-    f.close()
-
-    if fileScore > 0:
-        print("Your current score is", fileScore)
-        usrInput = input("Would you like to continue the game?\n"
-                          "y or n:")
-        if usrInput == "y":
-            main()
-    else:
-        return
-
 def endGame(startTime):
     f = open("keepScore.txt", "r")
     fileScore = int(f.read())
@@ -138,6 +124,11 @@ def cheats(randWord):
             print("\nThat code is invalid!\n"
                   "Please enjoy the game with cheats disabled!\n")
 
+"""
+Global Variables
+"""
+filename = []
+
 
 """
 ------------------------------------------------------------------
@@ -160,6 +151,15 @@ def main():
     print("\nThe game has picked a random 5 letter word\n")
     return filename, randWord, tries
 
+#Main Structure if user wants to continue game
+def mainCont(filename, tries):
+    tries = tries
+    filename = filename
+
+    randWord = pickRandomWord(filename)
+    cheats(randWord)
+    print("\nThe game has picked a random 5 letter word\n")
+    return filename, randWord, tries
 
 if __name__ == '__main__':
     startTime = time.time()  # starting time
@@ -167,5 +167,12 @@ if __name__ == '__main__':
     #main() #main program
     mainOut = main()
     guessCompair(mainOut[0], mainOut[1], mainOut[2])
-    #continueGame() #checks if user can continue game. Only works once right now
+    cont = continueGame()
+
+   #Loop if user wants to continue the game
+    while cont == 1:
+        mainContinue = mainCont(mainOut[0], mainOut[2])
+        guessCompair(mainContinue[0], mainContinue[1], mainContinue[2])
+        cont = continueGame()
+
     endGame(startTime) #ends game
