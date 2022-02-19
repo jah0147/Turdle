@@ -76,6 +76,7 @@ def main():
     testFile = "testFile.txt"
     mainFile = "words.txt"
 
+
     print("\nWELCOME TO TURDLE\n"
           "The goal of the game is to guess the 5-letter word in 5 tries or less.\n"
           "Good Luck!\n\n")
@@ -93,7 +94,7 @@ def main():
 
 
     #filename = testFile  # change the text file to change words
-    print("You are using the", "'", filename, "'", "word list!\n")
+    print("You are using the", filename, "word list!\n")
 
     # Set varaibles -
     # These variables are called here so that they are consistent throughout the program.
@@ -121,6 +122,7 @@ def main():
         else:
             print("\nThat code is invalid!\n"
                   "Please enjoy the game with cheats disabled!\n")
+            tries = 6
     else:
         tries = 6
 

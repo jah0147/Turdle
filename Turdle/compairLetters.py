@@ -4,6 +4,9 @@
 """
 #Importing this to guessWord
 
+incorrectBank = [] #Stores incorrect
+charBank = []  #keeps similar letters that are out of order
+
 #Compairs exact location of letters
 def compairCharAndLocation(word, usrInput):
     rndWord = word #This is the random word that was generated
@@ -13,11 +16,13 @@ def compairCharAndLocation(word, usrInput):
 
     #For console view
     locationBank = ["_","_","_","_","_"] #stores correct positioned letters
-    charBank = ["_","_","_","_"]  #keeps similar letters that are out of order
-    incorrectBank = ["", "", "", "", "", "", "", ""] #Stores incorrect
+
+
+    #incorrectCount = 0
+
 
     countCharBank = 0 #counter for charBank
-    incorrectCount = 0
+
 
     for i in range(size):
         if usrInput[i].lower() in rndWord.lower():
@@ -36,15 +41,17 @@ def compairCharAndLocation(word, usrInput):
                 if usrInput[i] in charBank: #This is to check if a letter is already stored in this array
                     countChar += 1
                 else: #If the letter needs to be stored and is not already stored in character bank
-                    charBank[countCharBank] = usrInput[i]
-                    countCharBank += 1
+                    charBank.append(usrInput[i])
+                    #charBank[countCharBank] = usrInput[i]
+                    #countCharBank += 1
                     countChar += 1
 
               #Stores incorrect words guessed
-        # else:
-        #     if usrInput[incorrectCount] not in incorrectBank:
-        #         incorrectBank[incorrectCount] = usrInput[i]
-        #         incorrectCount += 1
+        else:
+            if usrInput[i].lower() not in incorrectBank:
+                incorrectBank.append(usrInput[i].lower())
+
+
 
 
     #Information that will be printed every time
@@ -54,8 +61,11 @@ def compairCharAndLocation(word, usrInput):
     print("\nCorrect letters you have put in the wrong location")
     print("[{}{}{}{}]".format(*charBank))
 
-    # print("\nIncorrect Letters you have guessed")
-    # print("[]".format(*charBank))
+    print("\nIncorrect Letters you have guessed")
+    charBank = str(charBank)
+
+    incorrectBank.sort() #alphabetically sorts array
+    print(incorrectBank)
 
     print("\n\nThere is/are", countLocation, "letter(s) in the correct spot\n"
     "and there is/are", countChar,"total similar letter(s)!")

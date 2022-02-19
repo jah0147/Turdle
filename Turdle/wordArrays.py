@@ -12,7 +12,7 @@ def createArray(filename): #change filename to any other filename containing wor
         quit()
 
 # def testClass(words): #This is just used for testing
-#     #print spesific word
+#     #print specific word
 #     print(words[100]) #change number to print specific word
 #
 #     #print in order
