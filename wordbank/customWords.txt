@@ -1,0 +1,6 @@
+#--------------------------------------------#
+#               CUSTOM WORDS                 #
+#     Please enter your custom words here    #
+#--------------------------------------------#
+hello
+space
