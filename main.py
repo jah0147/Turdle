@@ -9,10 +9,12 @@ Ver. 0.1
 """
 
 #Python classes
-#import csv
+import sys
+sys.path.append('C:/Users/jacob/OneDrive/Desktop/Turtle/venv/Lib/site-packages/playsound.py')
 import random
 import time
 from playsound import playsound #Plays music file at start of game
+
 
 #from numpy import loadtxt
 
