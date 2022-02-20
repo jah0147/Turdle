@@ -5,12 +5,10 @@ This is a Word Guessing Game similar to Wordle.
     Hints will be given after each guess until you run out of tries.
 
 Author: Jacob Howard
-Ver. 0.1
+Ver. 1.5
 """
 
 #Python classes
-import sys
-sys.path.append('C:/Users/jacob/OneDrive/Desktop/Turtle/venv/Lib/site-packages/playsound.py')
 import random
 import time
 from playsound import playsound #Plays music file at start of game
