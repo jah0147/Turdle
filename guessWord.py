@@ -4,11 +4,19 @@ import os
 from randomWord import pickRandomWord
 from compairLetters import compairCharAndLocation
 from wordArrays import createArray
+from bank import bank
+from cheats import cheats
 
-guessedWords = [] #stores words the user has guessed
+# incorrectBank = bank()[1]
+# locationBankStorage = bank()[2]
+# locationBank = bank()[3]
+
+#guessedWords = [] #stores words the user has guessed
+guessedWords = bank()[0]
 score = 0
 
-def guessCompair(filename, word, tries):
+def guessCompair(filename, word, tries,
+                 incorrectBank, locationBankStorage, locationBank):
     global score
     word = str(word)
     allWords = []
@@ -21,17 +29,15 @@ def guessCompair(filename, word, tries):
         usrInput = input("\nPlease input your guess: ")
         clearScreen() #Clears up console somewhat
 
-        # Make sure the user only inputs a 5 letter word
-        if len(usrInput) != 5:
-            print("\nPlease enter a word that is 5 characters long!")
-            guessCompair(filename, word, tries)
+        if usrInput == "/cheats": #enabes cheat menu
+            tries = cheats(word)
 
-        #Checks if the user typed a word in the word-set
-        #This is only working with the words.txt file right now for some reason, so it will be commented out
-        # if usrInput.lower() not in allWords:
-        #     print("That is not a word in this word-set.\n"
-        #           "Please try another word!")
-        #     guessCompair(filename, word, tries)
+        # Make sure the user only inputs a 5 letter word
+        while len(usrInput) != 5:
+            print("\nPlease enter a word that is 5 characters long!")
+            usrInput = input("\nPlease input your guess: ")
+            #guessCompair(filename, word, tries)
+
 
         else:
             guessedWords.append(usrInput)
@@ -52,7 +58,8 @@ def guessCompair(filename, word, tries):
         elif tries > 0 and word.lower() != usrInput.lower():
             print("\nThat answer is incorrect. Please try again!")
             print("You have", tries, "tries left\n")
-            compairCharAndLocation(word, usrInput)
+            compairCharAndLocation(word, usrInput,
+                                   incorrectBank, locationBankStorage, locationBank)
 
 
         elif tries <= 0 and word.lower() != usrInput.lower():

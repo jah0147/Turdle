@@ -12,6 +12,7 @@ Ver. 0.1
 #import csv
 import random
 import time
+from playsound import playsound #Plays music file at start of game
 
 #from numpy import loadtxt
 
@@ -20,69 +21,12 @@ from wordArrays import createArray
 from randomWord import pickRandomWord
 from continueGame import continueGame
 from guessWord import guessCompair
-
+from bank import clearBank
+from bank import bank
+from selectGameMode import selectMode
+from selectGameMode import selectedGamemode
+from wordBank import wordBank
 tries = 0
-
-#Select the game difficulty
-def selectMode():
-    gamemode = 0
-    print("PLEASE SELECT YOUR GAMEMODE\n")
-    print("EASY - TYPE 1\n"
-          "MEDIUM - TYPE 2\n"
-          "HARD - TYPE 3")
-    usrInput = input()
-    gamemode = int(usrInput)
-    if gamemode == 1 or gamemode == 2 or gamemode == 3:
-        #gamemode = usrInput
-        return gamemode
-    else:
-        print("That is an invalid mode")
-        selectMode()
-
-def selectedGamemode(gamemode, randWord):
-    if gamemode == 1:
-        freeLetter = ["_","_","_","_","_"]
-        randNum = random.randint(0, 4)
-        tries = 10
-        freeLetter[randNum] = randWord[randNum]
-        print("-----------------EASY MODE-----------------\n"
-              "You will be given a random letter in the word and 10 tries\n"
-              , freeLetter)
-        return tries
-
-    elif gamemode == 2:
-        tries = 8
-        print("-----------------Medium MODE-----------------\n"
-              "You will be given 8 tries\n")
-        return tries
-    elif gamemode == 3:
-        tries = 5
-        print("-----------------HARD MODE-----------------\n"
-              "You will be given 5 tries\n")
-        return tries
-
-def wordBank():
-    # Text Files
-    customWords = "customWords.txt"
-    testFile = "testFile.txt"
-    mainFile = "words.txt"
-    wow = "worldOFwords.txt"
-
-    # Choose a word-bank
-    fileInput = input("\nWhat word-bank would you like to use:")
-    if fileInput.lower() == "custom":
-        filename = testFile
-    elif fileInput.lower() == "test":
-        filename = testFile
-    elif fileInput.lower() == "wow":
-        filename = wow
-    elif fileInput.lower() == "" or "main":
-        filename = mainFile
-    else:
-        filename = mainFile
-    # filename = testFile  # change the text file to change words
-    print("You are using the", filename, "word list!\n")
-    return filename
 
 def endGame(startTime):
     f = open("keepScore.txt", "r")
@@ -100,29 +44,13 @@ def endGame(startTime):
 
     quit() #quits the game
 
-def cheats(randWord):
-    usrInput = input("Would you like to enable cheats?\n"
-                     "y or n: ")
-    if usrInput.lower() == "y":
-        cheatcode = input("Please type in the cheat code: ")
-        if cheatcode == "word":
-            print("\nCHEATS ENABLED\n")
-            print("The random word is: ", randWord, "\n")  # For testing, prints the randomly generated word
-
-        elif cheatcode == "debug":
-
-            print("\nDEBUG ENABLED\n")
-            inputTries = input("Input the amount of tries you would like: ")
-            while not inputTries.strip().isdigit():
-                inputTries = input("Please input a number: ")
-
-            tries = int(inputTries)  # tries set to two for debugging
-            print("\nYou input", inputTries, "tries.")
-            print("The random word is: ", randWord, "\n")
-
-        else:
-            print("\nThat code is invalid!\n"
-                  "Please enjoy the game with cheats disabled!\n")
+def textArt():
+    # Prints Text Art
+    file = open("art.txt", "r")
+    art = file.readlines()
+    for line in art:
+        print(line)
+    file.close()
 
 """
 Global Variables
@@ -137,28 +65,32 @@ filename = []
 """
 
 def main():
+    playsound("music.mp3", False)  # Plays music
     global tries
+    textArt()
     print("\nWELCOME TO TURDLE\n"
           "The goal of the game is to guess the 5-letter word in 5 tries or less.\n"
           "Good Luck!\n\n")
 
     filename = wordBank()
     randWord = pickRandomWord(filename)
-    cheats(randWord)
+    #cheats(randWord)
     gamemode = selectMode()
     tries = selectedGamemode(gamemode, randWord)
 
     print("\nThe game has picked a random 5 letter word\n")
-    return filename, randWord, tries
+    return filename, randWord, tries, gamemode
 
 #Main Structure if user wants to continue game
-def mainCont(filename, tries):
+def mainCont(filename, tries, gamemode):
     tries = tries
     filename = filename
 
     randWord = pickRandomWord(filename)
-    cheats(randWord)
+    #cheats(randWord)
+
     print("\nThe game has picked a random 5 letter word\n")
+    tries = selectedGamemode(gamemode, randWord)
     return filename, randWord, tries
 
 if __name__ == '__main__':
@@ -166,13 +98,29 @@ if __name__ == '__main__':
 
     #main() #main program
     mainOut = main()
-    guessCompair(mainOut[0], mainOut[1], mainOut[2])
+    cont = int(0)
+
+    #Setting values that will be stored from users guesses
+    incorrectBank = bank()[1]
+    locationBankStorage = bank()[2]
+    locationBank = bank()[3]
+
+    guessCompair(mainOut[0], mainOut[1], mainOut[2],
+                 incorrectBank, locationBankStorage, locationBank)
+
     cont = continueGame()
 
    #Loop if user wants to continue the game
     while cont == 1:
-        mainContinue = mainCont(mainOut[0], mainOut[2])
-        guessCompair(mainContinue[0], mainContinue[1], mainContinue[2])
+        mainContinue = mainCont(mainOut[0], mainOut[2], mainOut[3])
+
+        #clears stored values that have been guessed
+        incorrectBank = clearBank(cont)[1]
+        locationBankStorage = clearBank(cont)[2]
+        locationBank = clearBank(cont)[3]
+
+        guessCompair(mainContinue[0], mainContinue[1], mainContinue[2],
+                     incorrectBank, locationBankStorage, locationBank)
         cont = continueGame()
 
     endGame(startTime) #ends game

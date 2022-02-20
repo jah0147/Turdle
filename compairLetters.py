@@ -3,23 +3,34 @@
     This will give the user hints to how close they are to guessing the word.
 """
 #Importing this to guessWord
+from bank import bank
 
-incorrectBank = [] #Stores incorrect
-locationBankStorage = ["_","_","_","_","_"]
+
+# incorrectBank = bank()[1]
+# locationBankStorage = bank()[2]
+# locationBank = bank()[3]
+# incorrectBank = [] #Stores incorrect
+#locationBankStorage = ["_","_","_","_","_"]
 
 #Compairs exact location of letters
-def compairCharAndLocation(word, usrInput):
+def compairCharAndLocation(word, usrInput,
+                           incorrectBank, locationBankStorage, locationBank):
     rndWord = word #This is the random word that was generated
     size = min(len(usrInput), len(rndWord)) #Finds min length
     countLocation = 0
     countChar = 0
 
     #For console view
-    locationBank = ["_","_","_","_","_"] #stores correct positioned letters
+    #locationBank = ["_","_","_","_","_"] #stores correct positioned letters
     charBank = []  # keeps similar letters that are out of order
-
+    #global locationBankStorage
     countCharBank = 0 #counter for charBank
 
+    # #If user continues game, this should clear the stored letters and words used previously
+    # if continueGame == 1:
+    #     incorrectBank.clear()
+    #     locationBankStorage = ["_","_","_","_","_"]
+    #     continueGame = 0
 
     for i in range(size):
         if usrInput[i].lower() in rndWord.lower():
