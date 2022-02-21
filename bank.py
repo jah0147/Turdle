@@ -20,6 +20,11 @@ def bank():
     global locationBankStorage
     global locationBank
 
+    guessWords = []
+    incorrectBank = []
+    locationBankStorage = ["_", "_", "_", "_", "_"]
+    locationBank = ["_", "_", "_", "_", "_"]  # stores correct positioned letters
+
     return guessWords, incorrectBank, locationBankStorage, locationBank
 
 

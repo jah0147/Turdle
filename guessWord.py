@@ -8,6 +8,7 @@ from bank import bank
 from cheats import cheats
 from quitGame import quitGame
 from clearScreen import cls
+from checkIfWord import checkWord
 
 # guessedWords = [] #stores words the user has guessed
 guessedWords = bank()[0]
@@ -33,20 +34,16 @@ def guessCompair(filename, word, tries,
         if usrInput == "/quit":  #quits the game and clears score
             quitGame()
 
-        if usrInput == "/cheats":  # enabes cheat menu
+        if usrInput == "/cheat":  # enabes cheat menu
             tries = cheats(word, tries)
-
-        # Make sure the user only inputs a 5 letter word
-        while len(usrInput) != 5:
-            print("\nPlease enter a word that is 5 characters long!")
             usrInput = input("\nPlease input your guess: ")
-            # guessCompair(filename, word, tries)
 
 
-        else:
-            guessedWords.append(usrInput)
-            guessedWords.sort()
-            print("You guessed: ", guessedWords)
+        usrInput = checkWord(filename, usrInput)
+
+        guessedWords.append(usrInput)
+        guessedWords.sort()
+        print("You guessed: ", guessedWords)
 
         tries = tries - 1  # Every try, count goes down
 
@@ -54,7 +51,7 @@ def guessCompair(filename, word, tries,
             score += 1
             print("\nThat is Correct!")
             print("The word was: ", word)
-            addScore()
+            addScore(tries)
             gameCompleted()  # Goes to end screen
             break
 
@@ -84,8 +81,8 @@ def gameCompleted():
     print("\nYou have completed the game!")
 
 
-def addScore():
-    score = 1
+def addScore(tries):
+    score = 1 * tries
     f = open("keepScore.txt", "r")
     fileScore = int(f.read())
     score += fileScore

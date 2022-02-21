@@ -37,15 +37,12 @@ def compairCharAndLocation(word, usrInput,
             if usrInput[i].lower() == rndWord[i].lower():
                 locationBank[i] = usrInput[i] #For visuals in console
                 locationBankStorage[i] = locationBank[i]
-                countLocation +=1  # Updating the counter when characters are same at an index
+                countLocation += 1  # Updating the counter when characters are same at an index
             else:
                 if usrInput[i] in charBank: #This is to check if a letter is already stored in this array
                     countChar += 1
                 else: #If the letter needs to be stored and is not already stored in character bank
                     charBank.append(usrInput[i])
-                    #charBank[countCharBank] = usrInput[i]
-                    #countCharBank += 1
-                    #countChar += 1
 
               #Stores incorrect words guessed
         else:
