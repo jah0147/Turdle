@@ -1,4 +1,4 @@
-#This module is the code for guessing the random word
+# This module is the code for guessing the random word
 import os
 
 from randomWord import pickRandomWord
@@ -11,39 +11,43 @@ from cheats import cheats
 # locationBankStorage = bank()[2]
 # locationBank = bank()[3]
 
-#guessedWords = [] #stores words the user has guessed
+# guessedWords = [] #stores words the user has guessed
 guessedWords = bank()[0]
 score = 0
+
+#Clears screen
+def cls():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
 
 def guessCompair(filename, word, tries,
                  incorrectBank, locationBankStorage, locationBank):
     global score
     word = str(word)
     allWords = []
-    clearScreen = lambda: print('\n' * 150)
+    # clearScreen = lambda: print('\n' * 150) #This was a sopy way of clearning screen
+    cls()
     allWords = str(createArray(filename)).lower()
-    #allWords = str(allWords)
-    #allWords = allWords.lower()
 
     while tries > 0:
         usrInput = input("\nPlease input your guess: ")
-        clearScreen() #Clears up console somewhat
+        #will clear screen
+        cls()
 
-        if usrInput == "/cheats": #enabes cheat menu
+        if usrInput == "/cheats":  # enabes cheat menu
             tries = cheats(word)
 
         # Make sure the user only inputs a 5 letter word
         while len(usrInput) != 5:
             print("\nPlease enter a word that is 5 characters long!")
             usrInput = input("\nPlease input your guess: ")
-            #guessCompair(filename, word, tries)
+            # guessCompair(filename, word, tries)
 
 
         else:
             guessedWords.append(usrInput)
             guessedWords.sort()
             print("You guessed: ", guessedWords)
-
 
         tries = tries - 1  # Every try, count goes down
 
@@ -52,7 +56,7 @@ def guessCompair(filename, word, tries,
             print("\nThat is Correct!")
             print("The word was: ", word)
             addScore()
-            gameCompleted() #Goes to end screen
+            gameCompleted()  # Goes to end screen
             break
 
         elif tries > 0 and word.lower() != usrInput.lower():
@@ -63,21 +67,23 @@ def guessCompair(filename, word, tries,
 
 
         elif tries <= 0 and word.lower() != usrInput.lower():
-            #If you run out of tries
+            # If you run out of tries
             print("\nYou have ran out of tries!")
             print("The word was: ", word)
 
-            #clears score
+            # clears score
             f = open("keepScore.txt", "w")
             f.write(str(0))
             f.close()
 
             gameCompleted()
             break
-    #return
+    # return
+
 
 def gameCompleted():
     print("\nYou have completed the game!")
+
 
 def addScore():
     score = 1
