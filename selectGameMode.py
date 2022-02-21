@@ -18,7 +18,7 @@ def selectMode():
     #Makse sure user enters a correct input
     while usrInput != str("1") and usrInput != str("2") and usrInput != str("3"):
         cls() #clears screen
-        print("\n-----------------------------"
+        print("\n-----------------------------\n"
               "EASY - TYPE 1\n"
               "MEDIUM - TYPE 2\n"
               "HARD - TYPE 3"

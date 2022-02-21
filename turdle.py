@@ -30,6 +30,7 @@ from bank import bank
 from selectGameMode import selectMode
 from selectGameMode import selectedGamemode
 from wordBank import wordBank
+from fullscreen import maximize_console
 tries = 0
 
 def endGame(startTime):
@@ -70,6 +71,7 @@ filename = []
 
 def main():
 
+    maximize_console()
     #playsound('music.mp3', False)  # Plays music (commented out as was giving bugs)
 
     global tries
