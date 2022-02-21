@@ -31,6 +31,7 @@ from selectGameMode import selectMode
 from selectGameMode import selectedGamemode
 from wordBank import wordBank
 from fullscreen import maximize_console
+from delay import delay
 tries = 0
 
 def endGame(startTime):
@@ -46,7 +47,7 @@ def endGame(startTime):
     startTime = int(startTime) #changing to int for cleanliness
     #print("\nYou finished the game with a score of", score)
     print("\nYou completed the game in", int(time.time()) - startTime, "seconds.")
-
+    delay(10) #delays for amount in seconds
     quit() #quits the game
 
 def textArt():
