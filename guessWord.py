@@ -9,14 +9,14 @@ from cheats import cheats
 from quitGame import quitGame
 from clearScreen import cls
 from checkIfWord import checkWord
-
 # guessedWords = [] #stores words the user has guessed
 guessedWords = bank()[0]
 score = 0
 
 
 def guessCompair(filename, word, tries,
-                 incorrectBank, locationBankStorage, locationBank):
+                 incorrectBank, locationBankStorage, locationBank,
+                 gamemode):
     global score
     word = str(word)
     allWords = []
@@ -38,8 +38,8 @@ def guessCompair(filename, word, tries,
             tries = cheats(word, tries)
             usrInput = input("\nPlease input your guess: ")
 
-
-        usrInput = checkWord(filename, usrInput)
+        if gamemode != 1:
+            usrInput = checkWord(filename, usrInput)
 
         guessedWords.append(usrInput)
         guessedWords.sort()

@@ -13,9 +13,9 @@ def checkWord(filename, usrInput):
             break
 
         else:
-            cls()
             print("You typed: ", usrInput)
             print("That is not a word in the Word-Bank! Please try again.")
             usrInput = input("Input:")
+            cls() #clears screen
 
     return usrInput

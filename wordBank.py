@@ -7,6 +7,7 @@ def wordBank():
     mainFile = "words.txt"
     wow = "worldOFwords.txt"
     explicit = "explicitWords.txt"
+    four = "4LetterWords.txt"
 
     # Choose a word-bank
     fileInput = input("\n What word-bank would you like to use?\n"
@@ -20,6 +21,8 @@ def wordBank():
         filename = wow
     elif fileInput.lower() == "x":
         filename = explicit
+    # elif fileInput.lower() == "4" or "four":
+    #     filename = four
     elif fileInput.lower() == "" or "main":
         filename = mainFile
     else:

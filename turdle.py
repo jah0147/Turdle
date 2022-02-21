@@ -97,7 +97,7 @@ def mainCont(filename, tries, gamemode):
 
     print("\nThe game has picked a random 5 letter word\n")
     tries = selectedGamemode(gamemode, randWord)
-    return filename, randWord, tries
+    return filename, randWord, tries, gamemode
 
 if __name__ == '__main__':
 
@@ -113,7 +113,8 @@ if __name__ == '__main__':
     locationBank = bank()[3]
 
     guessCompair(mainOut[0], mainOut[1], mainOut[2],
-                 incorrectBank, locationBankStorage, locationBank)
+                 incorrectBank, locationBankStorage, locationBank,
+                 mainOut[3])
 
     cont = continueGame()
 
@@ -127,7 +128,8 @@ if __name__ == '__main__':
         locationBank = clearBank(cont)[3]
 
         guessCompair(mainContinue[0], mainContinue[1], mainContinue[2],
-                     incorrectBank, locationBankStorage, locationBank)
+                     incorrectBank, locationBankStorage, locationBank,
+                     mainOut[4])
         cont = continueGame()
 
     endGame(startTime) #ends game
