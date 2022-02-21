@@ -5,10 +5,14 @@ This is a Word Guessing Game similar to Wordle.
     Hints will be given after each guess until you run out of tries.
 
 Author: Jacob Howard
-Ver. 1.5
+Ver. 0.1
 """
 
 #Python classes
+import sys
+import threading
+
+sys.path.append('C:/Users/jacob/OneDrive/Desktop/Turtle/venv/Lib/site-packages/playsound.py')
 import random
 import time
 from playsound import playsound #Plays music file at start of game
@@ -65,12 +69,14 @@ filename = []
 """
 
 def main():
-    playsound("music.mp3", False)  # Plays music
+
+    playsound('music.mp3', False)  # Plays music
+
     global tries
     textArt()
-    print("\nWELCOME TO TURDLE\n"
+    print("\n--------------------------WELCOME TO TURDLE-------------------------\n"
           "The goal of the game is to guess the 5-letter word in 5 tries or less.\n"
-          "Good Luck!\n\n")
+          "----------------------------Good Luck!----------------------------\n\n")
 
     filename = wordBank()
     randWord = pickRandomWord(filename)
@@ -94,6 +100,7 @@ def mainCont(filename, tries, gamemode):
     return filename, randWord, tries
 
 if __name__ == '__main__':
+
     startTime = time.time()  # starting time
 
     #main() #main program

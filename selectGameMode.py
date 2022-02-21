@@ -1,4 +1,5 @@
 import random
+from clearScreen import cls
 
 #Select the game difficulty
 def selectMode():
@@ -12,12 +13,21 @@ def selectMode():
 
     usrInput = input("input:")
     gamemode = usrInput
+
+    #Makse sure user enters a correct input
+    while usrInput != str("1") and usrInput != str("2") and usrInput != str("3"):
+        cls() #clears screen
+        print("EASY - TYPE 1\n"
+              "MEDIUM - TYPE 2\n"
+              "HARD - TYPE 3"
+              "\n-----------------------------\n")
+        print("That is an invalid mode! Please enter 1, 2, or 3")
+        usrInput = input("Input:")
+        gamemode = usrInput
+
     if gamemode == "1" or gamemode == "2" or gamemode == "3":
         gamemode = int(usrInput)
-        return gamemode
-    else:
-        print("That is an invalid mode")
-        selectMode()
+        return int(gamemode)
 
 def selectedGamemode(gamemode, randWord):
     if gamemode == 1:
@@ -25,6 +35,8 @@ def selectedGamemode(gamemode, randWord):
         randNum = random.randint(0, 4)
         tries = 10
         freeLetter[randNum] = randWord[randNum]
+
+        cls() #clears screen
         print("-----------------EASY MODE-----------------\n"
               "You will be given a random letter in the word and 10 tries\n"
               , freeLetter)

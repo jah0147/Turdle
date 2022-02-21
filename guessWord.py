@@ -6,18 +6,12 @@ from compairLetters import compairCharAndLocation
 from wordArrays import createArray
 from bank import bank
 from cheats import cheats
-
-# incorrectBank = bank()[1]
-# locationBankStorage = bank()[2]
-# locationBank = bank()[3]
+from quitGame import quitGame
+from clearScreen import cls
 
 # guessedWords = [] #stores words the user has guessed
 guessedWords = bank()[0]
 score = 0
-
-#Clears screen
-def cls():
-    os.system('cls' if os.name == 'nt' else 'clear')
 
 
 def guessCompair(filename, word, tries,
@@ -25,17 +19,22 @@ def guessCompair(filename, word, tries,
     global score
     word = str(word)
     allWords = []
+
     # clearScreen = lambda: print('\n' * 150) #This was a sopy way of clearning screen
-    cls()
     allWords = str(createArray(filename)).lower()
 
-    while tries > 0:
+    print("please feel free to type '/quit' at any time to quit the game")
+
+    while int(tries) > 0:
         usrInput = input("\nPlease input your guess: ")
         #will clear screen
         cls()
 
+        if usrInput == "/quit":  #quits the game and clears score
+            quitGame()
+
         if usrInput == "/cheats":  # enabes cheat menu
-            tries = cheats(word)
+            tries = cheats(word, tries)
 
         # Make sure the user only inputs a 5 letter word
         while len(usrInput) != 5:

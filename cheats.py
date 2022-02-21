@@ -1,6 +1,6 @@
 #If the user woould like cheats
 
-def cheats(randWord):
+def cheats(randWord, tries):
     # usrInput = input("Would you like to enable cheats?\n"
     #                  "y or n: ")
     # if usrInput.lower() == "y":
@@ -9,7 +9,7 @@ def cheats(randWord):
         if cheatcode == "word":
             print("\nCHEATS ENABLED\n")
             print("The random word is: ", randWord, "\n")  # For testing, prints the randomly generated word
-
+            return tries
         elif cheatcode == "debug":
 
             print("\nDEBUG ENABLED\n")
@@ -20,9 +20,9 @@ def cheats(randWord):
             tries = int(inputTries)  # tries set to two for debugging
             print("\nYou input", inputTries, "tries.")
             print("The random word is: ", randWord, "\n")
-
             return tries
 
         else:
             print("\nThat code is invalid!\n"
                   "Please enjoy the game with cheats disabled!\n")
+            return tries
