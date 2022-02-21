@@ -15,7 +15,7 @@ import threading
 sys.path.append('C:/Users/jacob/OneDrive/Desktop/Turtle/venv/Lib/site-packages/playsound.py')
 import random
 import time
-from playsound import playsound #Plays music file at start of game
+#from playsound import playsound #Plays music file at start of game
 
 
 #from numpy import loadtxt
@@ -70,7 +70,7 @@ filename = []
 
 def main():
 
-    playsound('music.mp3', False)  # Plays music
+    #playsound('music.mp3', False)  # Plays music
 
     global tries
     textArt()
