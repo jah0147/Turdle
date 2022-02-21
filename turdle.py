@@ -5,7 +5,7 @@ This is a Word Guessing Game similar to Wordle.
     Hints will be given after each guess until you run out of tries.
 
 Author: Jacob Howard
-Ver. 1.4
+Ver. 0.1
 """
 
 #Python classes
@@ -70,7 +70,7 @@ filename = []
 
 def main():
 
-    #playsound('music.mp3', False)  # Plays music
+    #playsound('music.mp3', False)  # Plays music (commented out as was giving bugs)
 
     global tries
     textArt()
@@ -111,10 +111,11 @@ if __name__ == '__main__':
     incorrectBank = bank()[1]
     locationBankStorage = bank()[2]
     locationBank = bank()[3]
+    guessedWords = bank()[0]
 
     guessCompair(mainOut[0], mainOut[1], mainOut[2],
                  incorrectBank, locationBankStorage, locationBank,
-                 mainOut[3])
+                 mainOut[3], guessedWords)
 
     cont = continueGame()
 
@@ -123,13 +124,15 @@ if __name__ == '__main__':
         mainContinue = mainCont(mainOut[0], mainOut[2], mainOut[3])
 
         #clears stored values that have been guessed
+       #guessedWords = clearBank(cont)[0]
         incorrectBank = clearBank(cont)[1]
         locationBankStorage = clearBank(cont)[2]
         locationBank = clearBank(cont)[3]
+        guessedWords = clearBank(cont)[0]
 
         guessCompair(mainContinue[0], mainContinue[1], mainContinue[2],
                      incorrectBank, locationBankStorage, locationBank,
-                     mainContinue[3])
+                     mainContinue[3], guessedWords)
         cont = continueGame()
 
     endGame(startTime) #ends game

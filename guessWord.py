@@ -10,13 +10,13 @@ from quitGame import quitGame
 from clearScreen import cls
 from checkIfWord import checkWord
 # guessedWords = [] #stores words the user has guessed
-guessedWords = bank()[0]
+#guessedWords = bank()[0]
 score = 0
 
 
 def guessCompair(filename, word, tries,
                  incorrectBank, locationBankStorage, locationBank,
-                 gamemode):
+                 gamemode, guessedWords):
     global score
     word = str(word)
     allWords = []
