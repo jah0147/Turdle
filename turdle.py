@@ -5,7 +5,7 @@ This is a Word Guessing Game similar to Wordle.
     Hints will be given after each guess until you run out of tries.
 
 Author: Jacob Howard
-Ver. 0.1
+Ver. 1.4
 """
 
 #Python classes
