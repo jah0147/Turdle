@@ -35,7 +35,6 @@ freeLetter = [""]
 def selectedGamemode(gamemode, randWord):
     if gamemode == 1:
         global freeLetter
-        #freeLetter = ["_","_","_","_","_"]
         freeLetter.clear()
         freeLetter = bank()[2]
         randNum1 = random.randint(0, 2)
@@ -58,6 +57,7 @@ def selectedGamemode(gamemode, randWord):
         randNum1 = random.randint(0, 4)
 
         freeLetter[randNum1] = randWord[randNum1]
+        cls()  # clears screen
         print("-----------------Medium MODE-----------------\n"
               "\nYou will be given 1 random letter and", tries, "tries\n")
         print("\nYour free letter is\n",
@@ -65,6 +65,7 @@ def selectedGamemode(gamemode, randWord):
         return tries
     elif gamemode == 3:
         tries = 6
+        cls()  # clears screen
         print("-----------------HARD MODE-----------------\n"
               "\nYou will be given", tries, "tries and no letters\n")
         return tries
