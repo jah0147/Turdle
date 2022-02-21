@@ -3,6 +3,7 @@ from wordArrays import createArray
 from cheats import cheats
 from quitGame import quitGame
 from clearScreen import cls
+from bank import bank
 
 def checkWord(filename, usrInput):
     words = str(createArray(filename))
@@ -15,6 +16,7 @@ def checkWord(filename, usrInput):
         else:
             print("You typed: ", usrInput)
             print("That is not a word in the Word-Bank! Please try again.")
+
             usrInput = input("Input:")
             cls() #clears screen
 

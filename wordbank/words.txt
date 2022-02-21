@@ -604,7 +604,6 @@ spill
 split
 spoke
 sport
-spree
 staff
 stage
 stake

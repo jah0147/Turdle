@@ -37,8 +37,9 @@ def selectedGamemode(gamemode, randWord):
         global freeLetter
         freeLetter.clear()
         freeLetter = bank()[2]
+        length = len(randWord) - 1
         randNum1 = random.randint(0, 2)
-        randNum2 = random.randint(3, 4)
+        randNum2 = random.randint(3, length)
         tries = 10
         freeLetter[randNum1] = randWord[randNum1]
         freeLetter[randNum2] = randWord[randNum2]
