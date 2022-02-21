@@ -47,6 +47,7 @@ def endGame(startTime):
     startTime = int(startTime) #changing to int for cleanliness
     #print("\nYou finished the game with a score of", score)
     print("\nYou completed the game in", int(time.time()) - startTime, "seconds.")
+    print("\nThe game will close in 10 seconds...")
     delay(10) #delays for amount in seconds
     quit() #quits the game
 
