@@ -1,8 +1,8 @@
 set PATH=%PATH%;C:\Program Files\Git\bin
 
 git init
-
-git reset --hard
+git remote origin https://github.com/jah0147/turdle
+git reset --hard origin/main
 git pull https://github.com/jah0147/turdle
 pause
 
