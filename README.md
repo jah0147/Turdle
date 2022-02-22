@@ -4,7 +4,7 @@ Turdle is a game I am developing in python similar to Wordle. You have 5 tries t
 To run:
 - 
 - Install python 3.9+ (https://www.python.org/downloads/)
-- When installing python, please check to include Python in PATH (This will allow you to use pip command in terminal).
+- When installing python, please check 'Include Python in PATH' (This will allow you to use pip command in terminal).
 - Open a Terminal (Windows PowerShell is fine) and type: 
 - 
 - pip install numpy
