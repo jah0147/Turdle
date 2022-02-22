@@ -5,14 +5,22 @@ To run:
 - 
 - Install python 3.9+ (https://www.python.org/downloads/)
 - When installing python, please check 'Include Python in PATH' (This will allow you to use pip command in terminal).
-- Open a Terminal (Windows PowerShell is fine) and type: 
-- 
-- pip install numpy
-- pip install pygame
-- 
-(This package is needed, as I used the numpy library in the code.)
 
- - Unzip all files into a folder named Turdle.
+In Terminal 
+-
+(Windows PowerShell is fine)
+
+- Type one at a time and press Enter
+
+pip install numpy
+
+pip install pygame
+
+(These packages are needed as I used the numpy and pygame libraries in the code.)
+
+Play Game
+-
+- Unzip all files into a folder named Turdle.
 - In the Folder where you extracted the files, double click the run.bat file to run the game.
 
 Enjoy the Game!
