@@ -1,0 +1,4 @@
+The python libraries have finished installing!
+
+If you see an error that pip was not recognized, 
+please reinstall python and check the box to include Python in PATH
