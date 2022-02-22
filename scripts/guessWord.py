@@ -78,9 +78,9 @@ def guessCompair(filename, word, tries,
             print("The word was: ", word)
 
             # clears score
-            f = open("keepScore.txt", "w")
-            f.write(str(0))
-            f.close()
+            # f = open("keepScore.txt", "w")
+            # f.write(str(0))
+            # f.close()
 
             gameCompleted()
             break
@@ -92,7 +92,7 @@ def gameCompleted():
 
 
 def addScore(tries):
-    score = 1 * tries
+    score = tries + 1
     f = open("keepScore.txt", "r")
     fileScore = int(f.read())
     score += fileScore

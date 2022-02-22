@@ -33,38 +33,16 @@ from wordBank import wordBank
 from fullscreen import maximize_console
 from delay import delay
 from sounds import music
-tries = 0
-def endGame(startTime):
-    f = open("keepScore.txt", "r")
-    fileScore = int(f.read())
-    f.close()
-    print("You scored ", fileScore, "points!")
+from endGame import endGame
+from art import textArt
 
-    f = open("keepScore.txt", "w")
-    f.write(str(0))
-    f.close()
 
-    seconds = 5 #time in seconds for delay
-    startTime = int(startTime) #changing to int for cleanliness
-    #print("\nYou finished the game with a score of", score)
-    print("\nYou completed the game in", int(time.time()) - startTime, "seconds.")
-    print("\nThe game will close in", seconds,  "seconds...")
-    delay(seconds) #delays for amount in seconds
-    quit() #quits the game
-
-def textArt():
-    # Prints Text Art
-    file = open("art.txt", "r")
-    art = file.readlines()
-    for line in art:
-        print(line)
-    file.close()
 
 """
 Global Variables
 """
 filename = []
-
+tries = 0 #sets current tries to 0
 
 """
 ------------------------------------------------------------------
