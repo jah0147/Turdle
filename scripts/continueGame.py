@@ -10,4 +10,10 @@ def continueGame():
         if usrInput == "y":
             return int(1)
     else:
-        return int(0)
+        usrInput = input("\nWould you like to play again?\n"
+                         "Type y or n:")
+        if usrInput == "y":
+            return int(1)
+        else:
+            return int(0)
+        return int(0) #making sure a value is retuned

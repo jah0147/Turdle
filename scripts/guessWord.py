@@ -36,7 +36,7 @@ def guessCompair(filename, word, tries,
 
         if usrInput == "/cheat":  # enabes cheat menu
             tries = cheats(word, tries)
-            usrInput = input("\nPlease input your guess: ")
+            usrInput = input("\nPlease input your guess:")
 
         if gamemode != 1:
             usrInput = checkWord(filename, usrInput, word)

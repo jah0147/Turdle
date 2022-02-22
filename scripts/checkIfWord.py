@@ -26,7 +26,7 @@ def checkWord(filename, usrInput, randWord):
         usrInput = input("Input:")
 
         #Clears 3 lines of terminal and places cursor in correct location
-        print ("\033[A                             \033[A")
+        print("\033[A                             \033[A")
         print("\033[A                             \033[A")
         print("\033[A                             \033[A")
         #cls()  # clears screen
