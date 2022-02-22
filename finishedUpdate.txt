@@ -1,5 +1,0 @@
-.
-Finished updating the game!
-  If you received any errors that git is not a command,
-  please run the install.bat file and install Git.
-  This will ensure the game is always up to date every time you run it!
