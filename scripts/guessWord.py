@@ -39,7 +39,7 @@ def guessCompair(filename, word, tries,
             usrInput = input("\nPlease input your guess: ")
 
         if gamemode != 1:
-            usrInput = checkWord(filename, usrInput)
+            usrInput = checkWord(filename, usrInput, word)
 
         guessedWords.append(usrInput)
         guessedWords.sort()

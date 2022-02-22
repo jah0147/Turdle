@@ -1,5 +1,7 @@
 from numpy import loadtxt
 
+words = []
+
 def createArray(filename): #change filename to any other filename containing words of length=5
     words = loadtxt(filename, dtype=str, comments="#", delimiter="\n", unpack=False)
     if len(words) > 0:
