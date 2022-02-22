@@ -44,11 +44,12 @@ def endGame(startTime):
     f.write(str(0))
     f.close()
 
+    seconds = 5 #time in seconds for delay
     startTime = int(startTime) #changing to int for cleanliness
     #print("\nYou finished the game with a score of", score)
     print("\nYou completed the game in", int(time.time()) - startTime, "seconds.")
-    print("\nThe game will close in 10 seconds...")
-    delay(10) #delays for amount in seconds
+    print("\nThe game will close in", seconds,  "seconds...")
+    delay(seconds) #delays for amount in seconds
     quit() #quits the game
 
 def textArt():
@@ -68,7 +69,7 @@ filename = []
 """
 ------------------------------------------------------------------
 ----------------------Main Program Start--------------------------
-------------------------------------------------------------------              
+------------------------------------------------------------------
 """
 
 def main():
