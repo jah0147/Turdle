@@ -1,1 +1,2 @@
-python scripts/turdle.py
+cd scripts
+python turdle.py
