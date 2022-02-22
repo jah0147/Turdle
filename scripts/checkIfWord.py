@@ -17,16 +17,25 @@ def checkWord(filename, usrInput, randWord):
     list = createArray(filename)
     words = listToString(list).lower()
 
+    print("\033[A                             \033[A")  # clears 1 line in terminal
     #Checks if the length of words match
     while len(usrInput) != len(randWord):
         print("You typed: ", usrInput)
         print("That is not a word in the Word-Bank! Please try again.")
 
         usrInput = input("Input:")
-        cls()  # clears screen
 
-    #If length matches, we check to make sure the word exists
-    while usrInput.lower() not in words:
+        #Clears 3 lines of terminal and places cursor in correct location
+        print ("\033[A                             \033[A")
+        print("\033[A                             \033[A")
+        print("\033[A                             \033[A")
+        #cls()  # clears screen
+
+        exp1 = usrInput.lower() not in words
+        exp2 = len(usrInput) != len(randWord)
+    #If length matches, we check to make sure the word exists and legth still matches
+    while usrInput.lower() not in words \
+            or len(usrInput) != len(randWord):
         if usrInput == "/quit":  #quits the game and clears score
             quitGame(randWord)
             break
@@ -36,6 +45,11 @@ def checkWord(filename, usrInput, randWord):
             print("That is not a word in the Word-Bank! Please try again.")
 
             usrInput = input("Input:")
-            cls() #clears screen
+
+            # Clears 3 lines of terminal and places cursor in correct location
+            print("\033[A                             \033[A")
+            print("\033[A                             \033[A")
+            print("\033[A                             \033[A")
+            #cls() #clears screen
 
     return usrInput

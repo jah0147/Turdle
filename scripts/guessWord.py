@@ -29,7 +29,7 @@ def guessCompair(filename, word, tries,
     while int(tries) > 0:
         usrInput = input("\nPlease input your guess: ")
         #will clear screen
-        cls()
+
 
         if usrInput == "/quit":  #quits the game and clears score
             quitGame(word)
@@ -40,6 +40,8 @@ def guessCompair(filename, word, tries,
 
         if gamemode != 1:
             usrInput = checkWord(filename, usrInput, word)
+
+        cls()
 
         guessedWords.append(usrInput)
         guessedWords.sort()
