@@ -8,13 +8,16 @@ winget install -e --id Python.Python.3
 
 :: This will use the pip command to install required packages
 REM Installing required Python Libraries
+REM If you already have these packages installed, they will not be reinstalled
 pip install numpy
 pip install pygame
 REM Python Libraries installed!
 REM
-REM If you recieved an error that command pip was not found,
+REM If you received an error that command pip was not found,
 REM please reinstall Python3 and check to Include Python in PATH
  pause
+
+ :: This will install GIT
 REM Installing Git for updating game
 REM If you have Git installed, please press No
  pause
