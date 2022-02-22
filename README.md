@@ -4,25 +4,28 @@ Turdle is a game I am developing in python similar to Wordle. You have 5 tries t
 To run:
 - 
 - Install python 3.9+ (https://www.python.org/downloads/)
-- When installing python, please check 'Include Python in PATH' (This will allow you to use pip command in terminal).
+  - When installing python, please check 'Include Python in PATH' (This will allow you to use pip command in terminal).
 
-In Terminal 
+Install 
 -
-(Windows PowerShell is fine)
+- Just run the install.bat file and it will do all the installs for you!
 
-- Type one at a time and press Enter
+    - Or use a Terminal (Windows PowerShell is fine)
 
-pip install numpy
+      Type one at a time and press Enter
 
-pip install pygame
+        - pip install numpy
 
-(These packages are needed as I used the numpy and pygame libraries in the code.)
+        - pip install pygame
 
-- OR you can just run the install.bat file and it will do all the installs for you!
+        (These packages are needed as I used the numpy and pygame libraries in the code.)
+        
+- If you get an error that pip is not a recognized command, reinstall python and check the box to Include Python in the PATH
+
 
 Play Game
 -
 - Unzip all files into a folder named Turdle.
-- In the Folder where you extracted the files, double click the run.bat file to run the game.
+- Double-Click the run.bat file in the Turdle folder you just unzipped.
 
 Enjoy the Game!
