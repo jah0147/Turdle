@@ -9,6 +9,10 @@ from cheats import cheats
 from quitGame import quitGame
 from clearScreen import cls
 from checkIfWord import checkWord
+#sounds
+from sounds import correctSound
+from sounds import incorrectSound
+from sounds import gameOvertSound
 # guessedWords = [] #stores words the user has guessed
 #guessedWords = bank()[0]
 score = 0
@@ -51,6 +55,7 @@ def guessCompair(filename, word, tries,
 
         if word.lower() == usrInput.lower():
             score += 1
+            correctSound() #plays correct sound
             print("\nThat is Correct!")
             print("The word was: ", word)
             addScore(tries)
@@ -58,6 +63,7 @@ def guessCompair(filename, word, tries,
             break
 
         elif tries > 0 and word.lower() != usrInput.lower():
+            incorrectSound() #plays inccorrect sound
             print("\nThat answer is incorrect. Please try again!")
             print("You have", tries, "tries left\n")
             compairCharAndLocation(word, usrInput,
@@ -66,6 +72,8 @@ def guessCompair(filename, word, tries,
 
         elif tries <= 0 and word.lower() != usrInput.lower():
             # If you run out of tries
+            gameOvertSound() #plays game over sound
+
             print("\nYou have ran out of tries!")
             print("The word was: ", word)
 

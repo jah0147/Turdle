@@ -32,6 +32,7 @@ from selectGameMode import selectedGamemode
 from wordBank import wordBank
 from fullscreen import maximize_console
 from delay import delay
+from sounds import music
 tries = 0
 def endGame(startTime):
     f = open("keepScore.txt", "r")
@@ -72,6 +73,7 @@ filename = []
 
 def main():
 
+    music()
     maximize_console()
     #playsound('music.mp3', False)  # Plays music (commented out as was giving bugs)
 
