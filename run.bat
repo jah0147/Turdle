@@ -4,7 +4,6 @@ git init
 git remote add origin https://github.com/jah0147/turdle
 git fetch origin
 git reset --hard origin/main
-pause
 
 @echo off
 for /f "tokens=*" %%s in (finishedUpdate.txt) do (
