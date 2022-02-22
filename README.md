@@ -1,12 +1,12 @@
 # Turdle
 Turdle is a game I am developing in python similar to Wordle. You have 5 tries to guess the 5 letter word. I am working on a UI later! Music and sounds are complete and working in-game.
 
-To run:
+Install Python 3.9+:
 - 
 - Install python 3.9+ (https://www.python.org/downloads/)
   - When installing python, please check 'Include Python in PATH' (This will allow you to use pip command in terminal).
 
-Install 
+Install Packages
 -
 - Just run the install.bat file and it will do all the installs for you!
 
