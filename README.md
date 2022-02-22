@@ -18,6 +18,8 @@ pip install pygame
 
 (These packages are needed as I used the numpy and pygame libraries in the code.)
 
+- YOU CAN ALSO JUST RUN THE install.bat file and it will do all the installs for you!
+
 Play Game
 -
 - Unzip all files into a folder named Turdle.
