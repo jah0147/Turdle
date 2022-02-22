@@ -1,1 +1,1 @@
-python turdle.py
+python scripts/turdle.py

@@ -30,10 +30,9 @@ from bank import bank
 from selectGameMode import selectMode
 from selectGameMode import selectedGamemode
 from wordBank import wordBank
-from fullscreen import maximize_console
-from delay import delay
+import scrips
+from scrips import fullscreen
 tries = 0
-
 def endGame(startTime):
     f = open("keepScore.txt", "r")
     fileScore = int(f.read())
@@ -73,7 +72,7 @@ filename = []
 
 def main():
 
-    maximize_console()
+    fullscreen.maximize_console()
     #playsound('music.mp3', False)  # Plays music (commented out as was giving bugs)
 
     global tries

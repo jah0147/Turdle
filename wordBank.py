@@ -24,9 +24,9 @@ def wordBank():
         filename = explicit
     elif fileInput.lower() == "more":
         filename = more
-    elif fileInput.lower() == "4" or "four":
+    elif fileInput.lower() == "4" or fileInput.lower() == "four":
         filename = four
-    elif fileInput.lower() == "" or "main":
+    elif fileInput.lower() == "" or fileInput.lower() == "main":
         filename = mainFile
     else:
         filename = mainFile
