@@ -2,8 +2,8 @@ set PATH=%PATH%;C:\Program Files\Git\bin
 
 git init
 git remote add origin https://github.com/jah0147/turdle
-git fetch origin/main
-git reset --hard origin
+git fetch origin
+git reset --hard origin/main
 pause
 
 @echo off
