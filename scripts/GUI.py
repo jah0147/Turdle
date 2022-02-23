@@ -19,8 +19,14 @@ font = pygame.font.SysFont(None, 20)
 
 #Menue Images
 def backgroundImage():
-    image = pygame.image.load('images/turtle.png')
-    screen.blit(image, (50, 250)) #draw images
+    turtle = pygame.image.load('images/turtle.png')
+    text = pygame.image.load('images/title.png')
+
+    turtlePos = (50, 250) #pos of turtle
+    textPos = (150, 5)
+
+    screen.blit(text, textPos)
+    screen.blit(turtle, turtlePos) #draws turtle
 
 def draw_text(text, font, color, surface, x, y):
     textobj = font.render(text, 1, color)
@@ -39,8 +45,8 @@ def main_menu():
 
         screenBackgroundColor = (204, 220, 204)
         screen.fill(screenBackgroundColor) #background color
-
-        draw_text('Welcome to Turdle', font, (255, 255, 255), screen, 275, 20)
+        textColor = (255, 183, 142)
+        draw_text('by Jacob Howard', font, textColor, screen, 250, 150)
 
         backgroundImage() #calls menue images to be loaded
 
