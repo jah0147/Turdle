@@ -24,10 +24,11 @@ Install Packages
 
 Install Git
 -
+- This is not required, but will ensure the game is always up-to-date when you run the run.bat file
 - Just run the install.bat file to install git or...
   - Go to https://git-scm.com/downloads to download Git
     - Install Git at C:\Program Files\Git\bin
-  - This is not required, but will ensure the game is always up-to-date when you run the run.bat file
+
 
 Play Game
 -
