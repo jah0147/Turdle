@@ -1,6 +1,10 @@
 # Turdle
 Turdle is a game I am developing in python similar to Wordle. You have 5 tries to guess the 5 letter word. I am working on a UI later! Music and sounds are complete and working in-game.
 
+Unzip Files
+-
+- Unzip all files into a folder named Turdle.
+
 Install Python 3.9+
 - Run install.bat to install Python 3 or...
   - Install python 3.9+ (https://www.python.org/downloads/)
@@ -32,7 +36,5 @@ Install Git
 
 Play Game
 -
-- Unzip all files into a folder named Turdle.
 - Double-Click the run.bat file in the Turdle folder you just unzipped.
-
-Enjoy the Game!
+  - Enjoy the Game!
