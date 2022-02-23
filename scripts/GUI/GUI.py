@@ -17,6 +17,10 @@ pygame.display.set_icon(icon)
 
 font = pygame.font.SysFont(None, 20)
 
+mainMenueImage = pygame.image.load('GUI/images/mainMenue.png')
+
+def drawImages():
+    screen.blit(mainMenueImage, 100, 100) #draw images
 
 def draw_text(text, font, color, surface, x, y):
     textobj = font.render(text, 1, color)
@@ -28,7 +32,7 @@ def draw_text(text, font, color, surface, x, y):
 click = False
 
 
-def main_menu(): #main menu
+def main_menu():
     music() #plays music
 
     while True:
