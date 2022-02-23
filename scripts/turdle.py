@@ -10,10 +10,8 @@ Ver. 0.1
 
 #Python classes
 import sys
-import threading
 
 sys.path.append('C:/Users/jacob/OneDrive/Desktop/Turtle/venv/Lib/site-packages/playsound.py')
-import random
 import time
 #from playsound import playsound #Plays music file at start of game
 
@@ -21,7 +19,6 @@ import time
 #from numpy import loadtxt
 
 #My Modules
-from wordArrays import createArray
 from randomWord import pickRandomWord
 from continueGame import continueGame
 from guessWord import guessCompair
@@ -31,7 +28,6 @@ from selectGameMode import selectMode
 from selectGameMode import selectedGamemode
 from wordBank import wordBank
 from fullscreen import maximize_console
-from delay import delay
 from sounds import music
 from endGame import endGame
 from art import textArt
