@@ -23,7 +23,11 @@ def backgroundImage():
     text = pygame.image.load('images/title.png')
 
     turtlePos = (50, 250) #pos of turtle
-    textPos = (150, 5)
+    textPos = (150, 5) #pos of text
+
+    # #Resize
+    # turtleSize = (100, 100)
+    # turtle = pygame.transform.scale(turtle, turtleSize)
 
     screen.blit(text, textPos)
     screen.blit(turtle, turtlePos) #draws turtle
