@@ -5,7 +5,9 @@ Unzip Files
 -
 - Unzip all files into a folder named Turdle.
 
+
 Install Python 3.9+
+-
 - Run install.bat to install Python 3 or...
   - Install python 3.9+ (https://www.python.org/downloads/)
     - When installing python, please check 'Include Python in PATH' (This will allow you to use pip command in terminal).
