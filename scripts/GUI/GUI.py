@@ -1,16 +1,26 @@
 #imports
 import pygame, sys
-from sounds import music
+from scripts.sounds import music
 mainClock = pygame.time.Clock()
 from pygame.locals import *
+
 pygame.init()
+
 pygame.display.set_caption('Turdle')
 width = 600
 height = 600
 screen = pygame.display.set_mode((width, height),0,32)
 
+#creating icon
+icon = pygame.image.load('GUI/images/turtle.png')
+pygame.display.set_icon(icon)
+
 font = pygame.font.SysFont(None, 20)
 
+mainMenueImage = pygame.image.load('GUI/images/mainMenue.png')
+
+def drawImages():
+    screen.blit(mainMenueImage, 100, 100) #draw images
 
 def draw_text(text, font, color, surface, x, y):
     textobj = font.render(text, 1, color)
