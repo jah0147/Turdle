@@ -1,6 +1,0 @@
-#This File is only for testing, using limited words of length 5
-
-Pizza
-Short
-Silly
-Stone
