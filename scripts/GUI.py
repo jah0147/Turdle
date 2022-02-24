@@ -62,16 +62,24 @@ def main_menu():
 
         mx, my = pygame.mouse.get_pos() #x and y of mouse
 
-        button_1 = pygame.Rect(300, 265, 200, 50) #creating button
-        button_2 = pygame.Rect(310, 365, 180, 40)
-        if button_1.collidepoint((mx, my)):
+        playButton = pygame.Rect(300, 265, 200, 50) #creating button (x,y,l,w)
+        optionsButton = pygame.Rect(310, 365, 180, 40)
+        quitButton = pygame.Rect(765, 20, 25, 25)
+
+        if playButton.collidepoint((mx, my)):
             if click:
                 game()
-        if button_2.collidepoint((mx, my)):
+        if optionsButton.collidepoint((mx, my)):
             if click:
                 options()
-        pygame.draw.rect(screen, (100, 52, 8), button_1) #button color and shape
-        pygame.draw.rect(screen, (68, 39, 1), button_2)
+        if quitButton.collidepoint((mx, my)):
+            if click:
+                pygame.quit()
+                sys.exit()
+
+        pygame.draw.rect(screen, (100, 52, 8), playButton) #button color and shape
+        pygame.draw.rect(screen, (68, 39, 1), optionsButton)
+        pygame.draw.rect(screen, (100, 0, 0), quitButton)
 
         click = False
         for event in pygame.event.get():
