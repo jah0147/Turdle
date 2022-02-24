@@ -1,11 +1,16 @@
+import os
+
 import pygame
-#from pygame.locals import *
+import sys
 from pygame import mixer
 
 
 def music():
     mixer.init()
-    music = pygame.mixer.Sound('sounds/music.wav')
+    if getattr(sys, 'frozen', False):
+        music = pygame.mixer.Sound(file=os.path.join(sys._MEIPASS, "sounds/music.wav"))
+    else:
+        music = pygame.mixer.Sound(file='sounds/music.wav')
     #mixer.music.load()
     music.set_volume(0.2)
     music.play(-1)
