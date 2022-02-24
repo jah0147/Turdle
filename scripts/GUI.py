@@ -5,18 +5,25 @@ mainClock = pygame.time.Clock()
 from pygame.locals import *
 from tkinter import *
 
-pygame.init()
+#script inports
+from guessWord import guessCompair
 
+pygame.init()
 pygame.display.set_caption('Turdle')
 width = 800
 height = 900
 screen = pygame.display.set_mode((width, height),0,32)
-
 #creating icon
 icon = pygame.image.load('images/turtle.png')
 pygame.display.set_icon(icon)
 
 font = pygame.font.SysFont(None, 20)
+##############################
+#Global Variables
+click = False
+tries = 10
+filename = "words.txt"
+##############################
 
 #Menue Images
 def backgroundImage():
@@ -39,8 +46,6 @@ def draw_text(text, font, color, surface, x, y):
     textrect.topleft = (x, y)
     surface.blit(textobj, textrect)
 
-
-click = False
 
 
 def main_menu():
@@ -88,6 +93,7 @@ def main_menu():
 def game(): #game window
     ############################
     #variables
+    #global tries
     usrInput = []
     running = True
     ############################
@@ -177,7 +183,10 @@ def game(): #game window
                         guessedWord = ''.join(usrInput) #creates list to string
                         print(str(guessedWord)) #for testing
 
-                    #compair guessed word to word here
+                        #compair guessed word to word here
+                        guessCompair(filename, guessedWord, tries)
+
+                        tries -= tries #subtracts tries every guess
 
         pygame.display.update()
         mainClock.tick(60)
@@ -187,6 +196,7 @@ def quitPopUp():
 
 def options():
     running = True
+    global tries #The options menu can change the ammount of tries
     while running:
         screen.fill((0, 0, 0))
 
