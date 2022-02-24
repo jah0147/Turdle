@@ -3,12 +3,13 @@ import pygame, sys
 from scripts.sounds import music
 mainClock = pygame.time.Clock()
 from pygame.locals import *
+from tkinter import *
 
 pygame.init()
 
 pygame.display.set_caption('Turdle')
-width = 600
-height = 600
+width = 800
+height = 900
 screen = pygame.display.set_mode((width, height),0,32)
 
 #creating icon
@@ -22,12 +23,12 @@ def backgroundImage():
     turtle = pygame.image.load('images/turtle.png')
     text = pygame.image.load('images/title.png')
 
-    turtlePos = (50, 250) #pos of turtle
-    textPos = (150, 5) #pos of text
+    turtlePos = (150, 500) #pos of turtle
+    textPos = (250, 5) #pos of text
 
     # #Resize
-    # turtleSize = (100, 100)
-    # turtle = pygame.transform.scale(turtle, turtleSize)
+    turtleSize = (512, 512)
+    turtle = pygame.transform.scale(turtle, turtleSize)
 
     screen.blit(text, textPos)
     screen.blit(turtle, turtlePos) #draws turtle
@@ -50,14 +51,14 @@ def main_menu():
         screenBackgroundColor = (204, 220, 204)
         screen.fill(screenBackgroundColor) #background color
         textColor = (255, 183, 142)
-        draw_text('by Jacob Howard', font, textColor, screen, 250, 150)
+        draw_text('by Jacob Howard', font, textColor, screen, 350, 150)
 
         backgroundImage() #calls menue images to be loaded
 
         mx, my = pygame.mouse.get_pos() #x and y of mouse
 
-        button_1 = pygame.Rect(200, 175, 200, 50) #creating button
-        button_2 = pygame.Rect(210, 500, 180, 40)
+        button_1 = pygame.Rect(300, 265, 200, 50) #creating button
+        button_2 = pygame.Rect(310, 365, 180, 40)
         if button_1.collidepoint((mx, my)):
             if click:
                 game()
@@ -84,23 +85,105 @@ def main_menu():
         mainClock.tick(60)
 
 
-def game():
+def game(): #game window
+    ############################
+    #variables
+    usrInput = []
     running = True
+    ############################
+    #Game UI
     while running:
-        screen.fill((0, 0, 0))
+        #Background
+        screenBackgroundColor = (204, 220, 204)
+        screen.fill(screenBackgroundColor)
 
         draw_text('game', font, (255, 255, 255), screen, 20, 20)
+
+        #Load reg boxes
+        box1 = pygame.image.load('images/tiles/defaultBox.png')
+        box2 = pygame.image.load('images/tiles/defaultBox.png')
+        box3 = pygame.image.load('images/tiles/defaultBox.png')
+        box4 = pygame.image.load('images/tiles/defaultBox.png')
+        box5 = pygame.image.load('images/tiles/defaultBox.png')
+
+        #reg boxes possition
+        box1Pos = (130, 50)  # pos of box
+        box2Pos = (240, 50)  # pos of box
+        box3Pos = (350, 50)  # pos of box
+        box4Pos = (460, 50)  # pos of box
+        box5Pos = (570, 50)  # pos of box
+
+        # #Resize reg boxes
+        box1Size = (100, 100)
+        box2Size = (100, 100)
+        box3Size = (100, 100)
+        box4Size = (100, 100)
+        box5Size = (100, 100)
+        box1 = pygame.transform.scale(box1, box1Size)
+        box2 = pygame.transform.scale(box2, box2Size)
+        box3 = pygame.transform.scale(box3, box3Size)
+        box4 = pygame.transform.scale(box4, box4Size)
+        box5 = pygame.transform.scale(box5, box5Size)
+
+        #draw reg boxes
+        screen.blit(box1, box1Pos)
+        screen.blit(box2, box2Pos)
+        screen.blit(box3, box3Pos)
+        screen.blit(box4, box4Pos)
+        screen.blit(box5, box5Pos)
+
+
+        ############################
+        #In-Game
         for event in pygame.event.get():
             if event.type == QUIT:
                 pygame.quit()
                 sys.exit()
             if event.type == KEYDOWN:
+
+                #if user presses ESC
                 if event.key == K_ESCAPE:
+                    quitPopUp() #Popup to quit game
                     running = False
+
+                if len(usrInput) < 5: #making sure user only inputs 5 letter words
+                    #Checking letters pressed
+                    if event.key == K_a or event.key == K_b or event.key == K_c or \
+                            event.key == K_d or event.key == K_e or event.key == K_f or \
+                            event.key == K_g or event.key == K_h or event.key == K_i or \
+                            event.key == K_j or event.key == K_k or event.key == K_l or \
+                            event.key == K_m or event.key == K_n or event.key == K_o or \
+                            event.key == K_p or event.key == K_q or event.key == K_r or \
+                            event.key == K_s or event.key == K_t or event.key == K_u or \
+                            event.key == K_v or event.key == K_w or event.key == K_x or \
+                            event.key == K_y or event.key == K_z:
+
+                        print(pygame.key.name(event.key)) #prints key pressed for debug
+                        letter = (pygame.key.name(event.key))
+                        #print(len(usrInput))
+
+                        usrInput.append(letter)
+                        print(len(usrInput))
+                        print(usrInput)
+
+                #checks if user wants to delete letters
+                if event.key == K_BACKSPACE: #if user deletes letters
+                    if len(usrInput) > 0:
+                        usrInput.pop() #deletes a letter
+
+                #If user presses enter to guess the 5 letter word
+                if len(usrInput) == 5:
+                    if event.key == K_RETURN: #If enter is pressed
+                        guessedWord = ''.join(usrInput) #creates list to string
+                        print(str(guessedWord)) #for testing
+
+                    #compair guessed word to word here
 
         pygame.display.update()
         mainClock.tick(60)
 
+def quitPopUp():
+    print("") #ask if user wants to quit here
 
 def options():
     running = True
@@ -121,3 +204,4 @@ def options():
 
 if __name__ == '__main__':
     main_menu()
+    game()
