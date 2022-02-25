@@ -7,6 +7,8 @@ from tkinter import *
 
 #script inports
 from guessWord import guessCompair
+from bank import bank
+from randomWord import pickRandomWord
 
 pygame.init()
 pygame.display.set_caption('Turdle')
@@ -22,7 +24,8 @@ font = pygame.font.SysFont(None, 20)
 #Global Variables
 click = False
 tries = 10
-filename = "words.txt"
+filename = "wordbank/words.txt"
+gamemode = 1
 ##############################
 
 #Menue Images
@@ -101,9 +104,18 @@ def main_menu():
 def game(): #game window
     ############################
     #variables
-    #global tries
+    global tries
+    global gamemode
     usrInput = []
     running = True
+    randWord = pickRandomWord(filename)
+
+    # bank() returns guessWords, incorrectBank, locationBankStorage, locationBank
+    guessedWords = bank()[0]
+    incorrectBank = bank()[1]
+    locationBankStorage = bank()[2]
+    locationBank = bank()[3]
+
     ############################
     #Game UI
     while running:
@@ -192,7 +204,9 @@ def game(): #game window
                         print(str(guessedWord)) #for testing
 
                         #compair guessed word to word here
-                        guessCompair(filename, guessedWord, tries)
+                        guessCompair(filename, guessedWord, randWord, tries, incorrectBank,
+                                     locationBankStorage, locationBank, gamemode,
+                                     guessedWords)
 
                         tries -= tries #subtracts tries every guess
 

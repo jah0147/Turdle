@@ -18,11 +18,11 @@ from sounds import gameOvertSound
 score = 0
 
 
-def guessCompair(filename, word, tries,
+def guessCompair(filename, guessedWord, randWord, tries,
                  incorrectBank, locationBankStorage, locationBank,
                  gamemode, guessedWords):
     global score
-    word = str(word)
+    word = str(randWord)
     allWords = []
 
     # clearScreen = lambda: print('\n' * 150) #This was a sopy way of clearning screen
@@ -30,8 +30,9 @@ def guessCompair(filename, word, tries,
 
     print("please feel free to type '/quit' at any time to quit the game")
 
-    while int(tries) > 0:
-        usrInput = input("\nPlease input your guess: ")
+    if int(tries) > 0:
+        #usrInput = input("\nPlease input your guess: ")
+        usrInput = guessedWord #The word the user guesses
         #will clear screen
 
 
@@ -51,7 +52,7 @@ def guessCompair(filename, word, tries,
         guessedWords.sort()
         print("You guessed: ", guessedWords)
 
-        tries = tries - 1  # Every try, count goes down
+        #tries = tries - 1  # Every try, count goes down
 
         if word.lower() == usrInput.lower():
             score += 1
@@ -60,7 +61,7 @@ def guessCompair(filename, word, tries,
             print("The word was: ", word)
             addScore(tries)
             gameCompleted()  # Goes to end screen
-            break
+            return
 
         elif tries > 0 and word.lower() != usrInput.lower():
             incorrectSound() #plays inccorrect sound
@@ -83,8 +84,22 @@ def guessCompair(filename, word, tries,
             # f.close()
 
             gameCompleted()
-            break
-    # return
+            return
+    else:
+        # If you run out of tries
+        gameOvertSound()  # plays game over sound
+
+        print("\nYou have ran out of tries!")
+        print("The word was: ", word)
+
+        # clears score
+        # f = open("keepScore.txt", "w")
+        # f.write(str(0))
+        # f.close()
+
+        gameCompleted()
+        return
+    return
 
 
 def gameCompleted():
