@@ -36,17 +36,9 @@ def guessCompair(filename, guessedWord, randWord, tries,
         #will clear screen
 
 
-        if usrInput == "/quit":  #quits the game and clears score
-            quitGame(word)
-
-        if usrInput == "/cheat":  # enabes cheat menu
-            tries = cheats(word, tries)
-            usrInput = input("\nPlease input your guess:")
-
         if gamemode != 1:
             usrInput = checkWord(filename, usrInput, word)
 
-        cls()
 
         guessedWords.append(usrInput)
         guessedWords.sort()
@@ -61,7 +53,7 @@ def guessCompair(filename, guessedWord, randWord, tries,
             print("The word was: ", word)
             addScore(tries)
             gameCompleted()  # Goes to end screen
-            return
+            return "correct"
 
         elif tries > 0 and word.lower() != usrInput.lower():
             incorrectSound() #plays inccorrect sound
@@ -69,6 +61,7 @@ def guessCompair(filename, guessedWord, randWord, tries,
             print("You have", tries, "tries left\n")
             compairCharAndLocation(word, usrInput,
                                    incorrectBank, locationBankStorage, locationBank)
+            return "incorrect"
 
 
         elif tries <= 0 and word.lower() != usrInput.lower():
@@ -84,7 +77,7 @@ def guessCompair(filename, guessedWord, randWord, tries,
             # f.close()
 
             gameCompleted()
-            return
+            return "game over"
     else:
         # If you run out of tries
         gameOvertSound()  # plays game over sound
@@ -92,18 +85,16 @@ def guessCompair(filename, guessedWord, randWord, tries,
         print("\nYou have ran out of tries!")
         print("The word was: ", word)
 
-        # clears score
-        # f = open("keepScore.txt", "w")
-        # f.write(str(0))
-        # f.close()
 
         gameCompleted()
-        return
-    return
+        return "game over"
+
+    return "game over"
 
 
 def gameCompleted():
     print("\nYou have completed the game!")
+
 
 
 def addScore(tries):

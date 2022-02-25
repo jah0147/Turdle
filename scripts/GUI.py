@@ -105,6 +105,7 @@ def game(): #game window
     ############################
     #variables
     global tries
+    tries = 10
     global gamemode
     usrInput = []
     running = True
@@ -117,22 +118,22 @@ def game(): #game window
     locationBank = bank()[3]
 
     ############################
-    #Game UI
-    while running:
-        #Background
+
+    def gameUI():
+        # Background
         screenBackgroundColor = (204, 220, 204)
         screen.fill(screenBackgroundColor)
 
         draw_text('game', font, (255, 255, 255), screen, 20, 20)
 
-        #Load reg boxes
+        # Load reg boxes
         box1 = pygame.image.load('images/tiles/defaultBox.png')
         box2 = pygame.image.load('images/tiles/defaultBox.png')
         box3 = pygame.image.load('images/tiles/defaultBox.png')
         box4 = pygame.image.load('images/tiles/defaultBox.png')
         box5 = pygame.image.load('images/tiles/defaultBox.png')
 
-        #reg boxes possition
+        # reg boxes possition
         box1Pos = (130, 50)  # pos of box
         box2Pos = (240, 50)  # pos of box
         box3Pos = (350, 50)  # pos of box
@@ -151,64 +152,71 @@ def game(): #game window
         box4 = pygame.transform.scale(box4, box4Size)
         box5 = pygame.transform.scale(box5, box5Size)
 
-        #draw reg boxes
+        # draw reg boxes
         screen.blit(box1, box1Pos)
         screen.blit(box2, box2Pos)
         screen.blit(box3, box3Pos)
         screen.blit(box4, box4Pos)
         screen.blit(box5, box5Pos)
 
-
+    #Game UI
+    while running:
+        gameUI()
         ############################
         #In-Game
         for event in pygame.event.get():
             if event.type == QUIT:
                 pygame.quit()
                 sys.exit()
-            if event.type == KEYDOWN:
 
-                #if user presses ESC
-                if event.key == K_ESCAPE:
-                    quitPopUp() #Popup to quit game
-                    running = False
+            if tries > 0: #only allows input if tries is greater than 0
+                if event.type == KEYDOWN:
 
-                if len(usrInput) < 5: #making sure user only inputs 5 letter words
-                    #Checking letters pressed
-                    if event.key == K_a or event.key == K_b or event.key == K_c or \
-                            event.key == K_d or event.key == K_e or event.key == K_f or \
-                            event.key == K_g or event.key == K_h or event.key == K_i or \
-                            event.key == K_j or event.key == K_k or event.key == K_l or \
-                            event.key == K_m or event.key == K_n or event.key == K_o or \
-                            event.key == K_p or event.key == K_q or event.key == K_r or \
-                            event.key == K_s or event.key == K_t or event.key == K_u or \
-                            event.key == K_v or event.key == K_w or event.key == K_x or \
-                            event.key == K_y or event.key == K_z:
+                    #if user presses ESC
+                    if event.key == K_ESCAPE:
+                        quitPopUp() #Popup to quit game
+                        running = False
 
-                        print(pygame.key.name(event.key)) #prints key pressed for debug
-                        letter = (pygame.key.name(event.key))
-                        #print(len(usrInput))
+                    if len(usrInput) < 5: #making sure user only inputs 5 letter words
+                        #Checking letters pressed
+                        if event.key == K_a or event.key == K_b or event.key == K_c or \
+                                event.key == K_d or event.key == K_e or event.key == K_f or \
+                                event.key == K_g or event.key == K_h or event.key == K_i or \
+                                event.key == K_j or event.key == K_k or event.key == K_l or \
+                                event.key == K_m or event.key == K_n or event.key == K_o or \
+                                event.key == K_p or event.key == K_q or event.key == K_r or \
+                                event.key == K_s or event.key == K_t or event.key == K_u or \
+                                event.key == K_v or event.key == K_w or event.key == K_x or \
+                                event.key == K_y or event.key == K_z:
 
-                        usrInput.append(letter)
-                        print(len(usrInput))
-                        print(usrInput)
+                            print(pygame.key.name(event.key)) #prints key pressed for debug
+                            letter = (pygame.key.name(event.key))
+                            #print(len(usrInput))
 
-                #checks if user wants to delete letters
-                if event.key == K_BACKSPACE: #if user deletes letters
-                    if len(usrInput) > 0:
-                        usrInput.pop() #deletes a letter
+                            usrInput.append(letter)
+                            print(len(usrInput))
+                            print(usrInput)
 
-                #If user presses enter to guess the 5 letter word
-                if len(usrInput) == 5:
-                    if event.key == K_RETURN: #If enter is pressed
-                        guessedWord = ''.join(usrInput) #creates list to string
-                        print(str(guessedWord)) #for testing
+                    #checks if user wants to delete letters
+                    if event.key == K_BACKSPACE: #if user deletes letters
+                        if len(usrInput) > 0:
+                            usrInput.pop() #deletes a letter
 
-                        #compair guessed word to word here
-                        guessCompair(filename, guessedWord, randWord, tries, incorrectBank,
-                                     locationBankStorage, locationBank, gamemode,
-                                     guessedWords)
+                    #If user presses enter to guess the 5 letter word
+                    if len(usrInput) == 5:
+                        if event.key == K_RETURN: #If enter is pressed
+                            guessedWord = ''.join(usrInput) #creates list to string
+                            print(str(guessedWord)) #for testing
 
-                        tries -= tries #subtracts tries every guess
+                            #compair guessed word to word here
+                            guessCompair(filename, guessedWord, randWord, tries, incorrectBank,
+                                         locationBankStorage, locationBank, gamemode,
+                                         guessedWords)
+
+                            tries -= 1 #subtracts tries every guess
+
+            else: #PopUp that user has run out of tries (displays word and exits to main menu)
+                print("You have ran out of tries")
 
         pygame.display.update()
         mainClock.tick(60)
