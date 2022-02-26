@@ -1,6 +1,6 @@
 #imports
 import pygame, sys
-from scripts.sounds import music
+from sounds import music, soundSettings
 mainClock = pygame.time.Clock()
 from pygame.locals import *
 from tkinter import *
@@ -10,6 +10,7 @@ from guessWord import guessCompair
 from bank import bank
 from randomWord import pickRandomWord
 from selectGameMode import selectGamemode, selectedGamemode
+from delay import delay
 
 pygame.init()
 pygame.display.set_caption('Turdle')
@@ -223,9 +224,25 @@ def game(): #game window
                                          guessedWords)
 
                             tries -= 1 #subtracts tries every guess
+        triesOut = 0
+        if tries == 0:  # PopUp that user has run out of tries (displays word and exits to main menu)
+            print("You have ran out of tries")
+            noTriesPopUp = pygame.image.load('images/noTriesPopUp.png')
 
-            else: #PopUp that user has run out of tries (displays word and exits to main menu)
-                print("You have ran out of tries")
+            # reg boxes possition
+            noTriesPopUpPos = (0, 0)  # pos of box
+
+            # #Resize reg boxes
+            noTriesPopUpSize = (500, 500)
+            noTriesPopUp = pygame.transform.scale(noTriesPopUp, noTriesPopUpSize)
+
+            screen.blit(noTriesPopUp, noTriesPopUpPos)
+            delay(1)
+
+            triesOut += 1
+
+
+
         font = fontSize(80)
         draw_text(typedLetters, font, (0, 0, 0), surface=screen, x=200, y=300) #draws the users typings onto screen
         draw_text(str(locationBank), font, (0, 0, 0), surface=screen, x=200, y=400)
@@ -260,6 +277,17 @@ def options():
                     selectGamemode(2)
                 elif event.key == K_3:
                     selectGamemode(3)
+                #Sound Settings
+                elif event.key == K_4:
+                        soundSettings(0)
+                        music()
+
+                elif event.key == K_5:
+                    f = open('files/settings.txt')
+                    soundSetting = f.readlines()
+                    if soundSetting[10] == 'OFF\n':
+                        soundSettings(1)
+                        music()
 
         pygame.display.update()
         mainClock.tick(60)

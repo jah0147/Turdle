@@ -30,7 +30,6 @@ def selectGamemode(gamemode):
 def selectedGamemode(randWord):
     f = open('files/settings.txt')
     gm = f.readlines()
-    print(gm[4])
 
     if gm[4] == 'EASY\n':
         global freeLetter

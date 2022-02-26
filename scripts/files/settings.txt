@@ -6,3 +6,9 @@ HARD
 
 SCORE =
 0
+
+MUSIC =
+ON
+
+SOUNDFX =
+ON
