@@ -1,0 +1,8 @@
+WORDBANK =
+wordle.txt
+
+GAMEMODE =
+HARD
+
+SCORE =
+0

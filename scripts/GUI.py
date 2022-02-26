@@ -9,6 +9,7 @@ from tkinter import *
 from guessWord import guessCompair
 from bank import bank
 from randomWord import pickRandomWord
+from selectGameMode import selectGamemode, selectedGamemode
 
 pygame.init()
 pygame.display.set_caption('Turdle')
@@ -19,14 +20,19 @@ screen = pygame.display.set_mode((width, height),0,32)
 icon = pygame.image.load('images/turtle.png')
 pygame.display.set_icon(icon)
 
-font = pygame.font.SysFont(None, 20)
+
 ##############################
 #Global Variables
 click = False
 tries = 10
-filename = "wordbank/words.txt"
+filename = "files/words.txt"
 gamemode = 1
 ##############################
+
+#fontSize
+def fontSize(size):
+    font = pygame.font.SysFont(None, size)
+    return font
 
 #Menue Images
 def backgroundImage():
@@ -53,7 +59,7 @@ def draw_text(text, font, color, surface, x, y):
 
 def main_menu():
     music() #plays music
-
+    font = fontSize(20)
     while True:
 
         screenBackgroundColor = (204, 220, 204)
@@ -104,8 +110,6 @@ def main_menu():
 def game(): #game window
     ############################
     #variables
-    global tries
-    tries = 10
     global gamemode
     usrInput = []
     running = True
@@ -117,13 +121,15 @@ def game(): #game window
     locationBankStorage = bank()[2]
     locationBank = bank()[3]
 
+    tries = selectedGamemode(randWord)[0]
+    freeLetter = selectedGamemode(randWord)[1]
     ############################
 
     def gameUI():
         # Background
         screenBackgroundColor = (204, 220, 204)
         screen.fill(screenBackgroundColor)
-
+        font = fontSize(60)
         draw_text('game', font, (255, 255, 255), screen, 20, 20)
 
         # Load reg boxes
@@ -189,19 +195,20 @@ def game(): #game window
                                 event.key == K_v or event.key == K_w or event.key == K_x or \
                                 event.key == K_y or event.key == K_z:
 
-                            print(pygame.key.name(event.key)) #prints key pressed for debug
+                            #print(pygame.key.name(event.key)) #prints key pressed for testing
                             letter = (pygame.key.name(event.key))
                             #print(len(usrInput))
 
                             usrInput.append(letter)
                             typedLetters = ''.join(usrInput)
-                            print(len(usrInput))
-                            print(usrInput)
+                            # print(len(usrInput)) #for testing, not needed
+                            print(usrInput) #prints in consol for testing
 
                     #checks if user wants to delete letters
                     if event.key == K_BACKSPACE: #if user deletes letters
                         if len(usrInput) > 0:
                             usrInput.pop() #deletes a letter
+                            print(usrInput) #prints in consol for testing
                             typedLetters = ''.join(usrInput)
 
                     #If user presses enter to guess the 5 letter word
@@ -219,8 +226,10 @@ def game(): #game window
 
             else: #PopUp that user has run out of tries (displays word and exits to main menu)
                 print("You have ran out of tries")
-
-        draw_text(typedLetters, font, (0, 0, 0), surface=screen, x=300, y=300) #draws the users typings onto screen
+        font = fontSize(80)
+        draw_text(typedLetters, font, (0, 0, 0), surface=screen, x=200, y=300) #draws the users typings onto screen
+        draw_text(str(locationBank), font, (0, 0, 0), surface=screen, x=200, y=400)
+        draw_text(("tries = :" +str(tries)), font, (0, 0, 0), surface=screen, x=200, y=200)
 
         pygame.display.update()
         mainClock.tick(60)
@@ -234,7 +243,7 @@ def options():
     while running:
         screen.fill((0, 0, 0))
 
-        draw_text('options', font, (255, 255, 255), screen, 20, 20)
+        draw_text('options', fontSize(20), (255, 255, 255), screen, 20, 20)
         for event in pygame.event.get():
             if event.type == QUIT:
                 pygame.quit()
@@ -242,6 +251,15 @@ def options():
             if event.type == KEYDOWN:
                 if event.key == K_ESCAPE:
                     running = False
+
+            #Select gamemode in options menu
+            if event.type == KEYDOWN:
+                if event.key == K_1:
+                    selectGamemode(1)
+                elif event.key == K_2:
+                    selectGamemode(2)
+                elif event.key == K_3:
+                    selectGamemode(3)
 
         pygame.display.update()
         mainClock.tick(60)

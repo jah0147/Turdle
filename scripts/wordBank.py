@@ -1,4 +1,4 @@
-#Lets user select wordbank
+#Lets user select files
 
 def wordBank():
     # Text Files
@@ -30,7 +30,7 @@ def wordBank():
     else:
         filename = mainFile
 
-    path = 'wordbank/' + filename
+    path = 'files/' + filename
 
     print("You are using the", filename, "word list!\n")
     return path
