@@ -110,7 +110,7 @@ def game(): #game window
     usrInput = []
     running = True
     randWord = pickRandomWord(filename)
-
+    typedLetters = ""
     # bank() returns guessWords, incorrectBank, locationBankStorage, locationBank
     guessedWords = bank()[0]
     incorrectBank = bank()[1]
@@ -194,6 +194,7 @@ def game(): #game window
                             #print(len(usrInput))
 
                             usrInput.append(letter)
+                            typedLetters = ''.join(usrInput)
                             print(len(usrInput))
                             print(usrInput)
 
@@ -201,6 +202,7 @@ def game(): #game window
                     if event.key == K_BACKSPACE: #if user deletes letters
                         if len(usrInput) > 0:
                             usrInput.pop() #deletes a letter
+                            typedLetters = ''.join(usrInput)
 
                     #If user presses enter to guess the 5 letter word
                     if len(usrInput) == 5:
@@ -217,6 +219,8 @@ def game(): #game window
 
             else: #PopUp that user has run out of tries (displays word and exits to main menu)
                 print("You have ran out of tries")
+
+        draw_text(typedLetters, font, (0, 0, 0), surface=screen, x=300, y=300) #draws the users typings onto screen
 
         pygame.display.update()
         mainClock.tick(60)
