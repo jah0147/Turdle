@@ -245,8 +245,18 @@ def game(): #game window
 
         font = fontSize(80)
         draw_text(typedLetters, font, (0, 0, 0), surface=screen, x=200, y=300) #draws the users typings onto screen
-        draw_text(str(locationBank), font, (0, 0, 0), surface=screen, x=200, y=400)
+
+        #prints correct letter locations in location boxes
+        draw_text(str(locationBank[0]), font, (0, 0, 0), surface=screen, x=160, y=80)
+        draw_text(str(locationBank[1]), font, (0, 0, 0), surface=screen, x=270, y=80)
+        draw_text(str(locationBank[2]), font, (0, 0, 0), surface=screen, x=385, y=80)
+        draw_text(str(locationBank[3]), font, (0, 0, 0), surface=screen, x=490, y=80)
+        draw_text(str(locationBank[4]), font, (0, 0, 0), surface=screen, x=600, y=80)
+
+        #prints tries
         draw_text(("tries = :" +str(tries)), font, (0, 0, 0), surface=screen, x=200, y=200)
+
+        draw_text(("guessed words" + str(guessedWords)), fontSize(20), (0, 0, 0), surface=screen, x=200, y=500)
 
         pygame.display.update()
         mainClock.tick(60)
