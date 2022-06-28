@@ -28,7 +28,7 @@ from selectGameMode import selectMode
 from selectGameMode import selectedGamemode
 from wordBank import wordBank
 from fullscreen import maximize_console
-from sounds import music
+#from sounds import music
 from endGame import endGame
 from art import textArt
 
@@ -48,7 +48,7 @@ tries = 0 #sets current tries to 0
 
 def main():
 
-    music()
+#    music()
     maximize_console()
     #playsound('music.mp3', False)  # Plays music (commented out as was giving bugs)
 

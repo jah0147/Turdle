@@ -1,9 +1,15 @@
-from numpy import loadtxt
+#from numpy import loadtxt
 
 words = []
 
 def createArray(filename): #change filename to any other filename containing words of length=5
-    words = loadtxt(filename, dtype=str, comments="#", delimiter="\n", unpack=False)
+    #words = loadtxt(filename, dtype=str, comments="#", delimiter="\n", unpack=False)
+
+    #hack to run program without numpy functions
+    file = open(filename, 'r')
+    for line in file:
+        words.extend(line.splitlines())
+
     if len(words) > 0:
         return words
     else: #Error checking to make sure words are in the text file

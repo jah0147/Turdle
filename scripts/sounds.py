@@ -1,16 +1,11 @@
-import os
-
 import pygame
-import sys
+#from pygame.locals import *
 from pygame import mixer
 
 
 def music():
     mixer.init()
-    if getattr(sys, 'frozen', False): #This is adding path for .exe conversion
-        music = pygame.mixer.Sound(file=os.path.join(sys._MEIPASS, "sounds/music.wav"))
-    else:
-        music = pygame.mixer.Sound(file='sounds/music.wav')
+    music = pygame.mixer.Sound('sounds/music.wav')
     #mixer.music.load()
     music.set_volume(0.2)
     music.play(-1)
